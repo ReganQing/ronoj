@@ -10,10 +10,7 @@ import com.ron.ronoj.common.ResultUtils;
 import com.ron.ronoj.constant.UserConstant;
 import com.ron.ronoj.exception.BusinessException;
 import com.ron.ronoj.exception.ThrowUtils;
-import com.ron.ronoj.model.dto.question.QuestionAddRequest;
-import com.ron.ronoj.model.dto.question.QuestionEditRequest;
-import com.ron.ronoj.model.dto.question.QuestionQueryRequest;
-import com.ron.ronoj.model.dto.question.QuestionUpdateRequest;
+import com.ron.ronoj.model.dto.question.*;
 import com.ron.ronoj.model.entity.Question;
 import com.ron.ronoj.model.entity.User;
 import com.ron.ronoj.model.vo.QuestionVO;
@@ -65,6 +62,14 @@ public class QuestionController {
         List<String> tags = questionAddRequest.getTags();
         if (tags != null) {
             question.setTags(GSON.toJson(tags));
+        }
+        List<JudgeCase> judgeCase = questionAddRequest.getJudgeCase();
+        if (judgeCase != null) {
+            question.setJudgeCase(GSON.toJson(judgeCase));
+        }
+        JudgeConfig judgeConfig = questionAddRequest.getJudgeConfig();
+        if (judgeConfig != null) {
+            question.setJudgeConfig(GSON.toJson(judgeConfig));
         }
         questionService.validQuestion(question, true);
         User loginUser = userService.getLoginUser(request);
@@ -119,6 +124,14 @@ public class QuestionController {
         List<String> tags = questionUpdateRequest.getTags();
         if (tags != null) {
             question.setTags(GSON.toJson(tags));
+        }
+        List<JudgeCase> judgeCase = questionUpdateRequest.getJudgeCase();
+        if (judgeCase != null) {
+            question.setJudgeCase(GSON.toJson(judgeCase));
+        }
+        JudgeConfig judgeConfig = questionUpdateRequest.getJudgeConfig();
+        if (judgeConfig != null) {
+            question.setJudgeConfig(GSON.toJson(judgeConfig));
         }
         // 参数校验
         questionService.validQuestion(question, false);
@@ -211,6 +224,14 @@ public class QuestionController {
         List<String> tags = questionEditRequest.getTags();
         if (tags != null) {
             question.setTags(GSON.toJson(tags));
+        }
+        List<JudgeCase> judgeCase = questionEditRequest.getJudgeCase();
+        if (judgeCase != null) {
+            question.setJudgeCase(GSON.toJson(judgeCase));
+        }
+        JudgeConfig judgeConfig = questionEditRequest.getJudgeConfig();
+        if (judgeConfig != null) {
+            question.setJudgeConfig(GSON.toJson(judgeConfig));
         }
         // 参数校验
         questionService.validQuestion(question, false);
