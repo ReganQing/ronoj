@@ -1,9 +1,10 @@
-package com.ron.ronoj.model.dto.questionsubmit;
+package com.ron.ronoj.judge.codesandbox.model;
 
 import lombok.Data;
 
 /**
  * 判题信息
+ * @author Ron_567
  */
 @Data
 public class JudgeInfo {

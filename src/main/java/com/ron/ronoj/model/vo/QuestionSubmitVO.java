@@ -2,7 +2,7 @@ package com.ron.ronoj.model.vo;
 
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.ron.ronoj.model.dto.questionsubmit.JudgeInfo;
+import com.ron.ronoj.judge.codesandbox.model.JudgeInfo;
 import com.ron.ronoj.model.entity.QuestionSubmit;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
