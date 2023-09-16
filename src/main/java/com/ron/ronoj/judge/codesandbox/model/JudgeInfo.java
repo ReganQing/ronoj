@@ -23,4 +23,5 @@ public class JudgeInfo {
      * 消耗时间
      */
     private Long time;
+
 }

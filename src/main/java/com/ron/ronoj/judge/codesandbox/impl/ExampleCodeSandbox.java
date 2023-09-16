@@ -1,10 +1,10 @@
 package com.ron.ronoj.judge.codesandbox.impl;
 
-import com.ron.ronoj.judge.codesandbox.CodeSandBox;
+import com.ron.ronoj.judge.codesandbox.CodeSandbox;
 import com.ron.ronoj.judge.codesandbox.model.ExecuteCodeRequest;
 import com.ron.ronoj.judge.codesandbox.model.ExecuteCodeResponse;
 import com.ron.ronoj.judge.codesandbox.model.JudgeInfo;
-import com.ron.ronoj.model.enums.JudgeInfoMeaasgeEnum;
+import com.ron.ronoj.model.enums.JudgeInfoMessageEnum;
 import com.ron.ronoj.model.enums.QuestionSubmitStatusEnum;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author Ron_567
  */
-public class ExampleCodeSandBox implements CodeSandBox {
+public class ExampleCodeSandbox implements CodeSandbox {
     @Override
     public ExecuteCodeResponse executeCode(ExecuteCodeRequest executeCodeRequest) {
         List<String> inputList = executeCodeRequest.getInputList();
@@ -25,7 +25,7 @@ public class ExampleCodeSandBox implements CodeSandBox {
         executeCodeResponse.setMessage("测试执行成功");
         executeCodeResponse.setStatus(QuestionSubmitStatusEnum.SUCCEED.getValue());
         JudgeInfo judgeInfo = new JudgeInfo();
-        judgeInfo.setMessage(JudgeInfoMeaasgeEnum.ACCEPTED.getText());
+        judgeInfo.setMessage(JudgeInfoMessageEnum.ACCEPTED.getText());
         judgeInfo.setMemory(100L);
         judgeInfo.setTime(100L);
 

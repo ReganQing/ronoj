@@ -1,9 +1,7 @@
 package com.ron.ronoj.model.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
@@ -12,7 +10,7 @@ import lombok.Data;
  * 题目提交
  * @TableName question_submit
  */
-@TableName(value ="question_submit")
+@TableName(value = "question_submit")
 @Data
 public class QuestionSubmit implements Serializable {
     /**
@@ -32,12 +30,12 @@ public class QuestionSubmit implements Serializable {
     private String code;
 
     /**
-     * 判断信息（json）对象
+     * 判题信息（json 对象）
      */
     private String judgeInfo;
 
     /**
-     * 判题状态 （0 - 特判题， 1 - 判题中， 2 - 成功， 3 - 失败）
+     * 判题状态（0 - 待判题、1 - 判题中、2 - 成功、3 - 失败）
      */
     private Integer status;
 
@@ -61,6 +59,13 @@ public class QuestionSubmit implements Serializable {
      */
     private Date updateTime;
 
+    /**
+     * 是否删除
+     */
+    @TableLogic
+    private Integer isDelete;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
 }

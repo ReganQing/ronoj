@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * @author ron
  * 
  */
-public enum JudgeInfoMeaasgeEnum {
+public enum JudgeInfoMessageEnum {
 
     ACCEPTED("Accepted", "成功"),
     WRONG_ANSWER("Wrong Answer", "答案错误"),
@@ -31,7 +31,7 @@ public enum JudgeInfoMeaasgeEnum {
 
     private final String value;
 
-    JudgeInfoMeaasgeEnum(String text, String value) {
+    JudgeInfoMessageEnum(String text, String value) {
         this.text = text;
         this.value = value;
     }
@@ -51,11 +51,11 @@ public enum JudgeInfoMeaasgeEnum {
      * @param value
      * @return
      */
-    public static JudgeInfoMeaasgeEnum getEnumByValue(String value) {
+    public static JudgeInfoMessageEnum getEnumByValue(String value) {
         if (ObjectUtils.isEmpty(value)) {
             return null;
         }
-        for (JudgeInfoMeaasgeEnum anEnum : JudgeInfoMeaasgeEnum.values()) {
+        for (JudgeInfoMessageEnum anEnum : JudgeInfoMessageEnum.values()) {
             if (anEnum.value.equals(value)) {
                 return anEnum;
             }

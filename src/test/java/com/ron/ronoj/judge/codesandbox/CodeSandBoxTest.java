@@ -1,6 +1,6 @@
 package com.ron.ronoj.judge.codesandbox;
 
-import com.ron.ronoj.judge.codesandbox.impl.RemoteCodeSandBox;
+import com.ron.ronoj.judge.codesandbox.impl.RemoteCodeSandbox;
 import com.ron.ronoj.judge.codesandbox.model.ExecuteCodeRequest;
 import com.ron.ronoj.judge.codesandbox.model.ExecuteCodeResponse;
 import com.ron.ronoj.model.enums.QuestionSubmitLanguageEnum;
@@ -15,14 +15,14 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-class CodeSandBoxTest {
+class CodeSandboxTest {
     @Value("${codesandbox.type: example}")
     private String type;
     @Test
     void executeCode() {
-        CodeSandBox codeSandBox = new RemoteCodeSandBox();
+        CodeSandbox codeSandBox = new RemoteCodeSandbox();
         String code = "int main() {}";
-        String language = QuestionSubmitLanguageEnum.Java.getValue();
+        String language = QuestionSubmitLanguageEnum.JAVA.getValue();
         List<String> inputList = Arrays.asList("1 2", "3 4");
         ExecuteCodeRequest executeCodeRequest = ExecuteCodeRequest.builder()
                 .code(code)
@@ -35,9 +35,9 @@ class CodeSandBoxTest {
 
     @Test
     void executeCodeByValue() {
-        CodeSandBox codeSandBox = CodeSandBoxFactory.newInstance(type);
+        CodeSandbox codeSandBox = CodeSandboxFactory.newInstance(type);
         String code = "int main() {}";
-        String language = QuestionSubmitLanguageEnum.Java.getValue();
+        String language = QuestionSubmitLanguageEnum.JAVA.getValue();
         List<String> inputList = Arrays.asList("1 2", "3 4");
         ExecuteCodeRequest executeCodeRequest = ExecuteCodeRequest.builder()
                 .code(code)
@@ -50,10 +50,16 @@ class CodeSandBoxTest {
 
     @Test
     void executeCodeByProxy() {
-        CodeSandBox codeSandBox = CodeSandBoxFactory.newInstance(type);
-        codeSandBox = new CodeSandBoxProxy(codeSandBox);
-        String code = "int main() {}";
-        String language = QuestionSubmitLanguageEnum.Java.getValue();
+        CodeSandbox codeSandBox = CodeSandboxFactory.newInstance(type);
+        codeSandBox = new CodeSandboxProxy(codeSandBox);
+        String code = "public class Main {\n" +
+                "    public static void main(String[] args) {\n" +
+                "        int a = Integer.parseInt(args[0]);\n" +
+                "        int b = Integer.parseInt(args[1]);\n" +
+                "        System.out.println(\"结果是：\" + (a + b));\n" +
+                "    }\n" +
+                "}";
+        String language = QuestionSubmitLanguageEnum.JAVA.getValue();
         List<String> inputList = Arrays.asList("1 2", "3 4");
         ExecuteCodeRequest executeCodeRequest = ExecuteCodeRequest.builder()
                 .code(code)
@@ -68,9 +74,9 @@ class CodeSandBoxTest {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             String type = scanner.next();
-            CodeSandBox codeSandBox = CodeSandBoxFactory.newInstance(type);
+            CodeSandbox codeSandBox = CodeSandboxFactory.newInstance(type);
             String code = "int main() {}";
-            String language = QuestionSubmitLanguageEnum.Java.getValue();
+            String language = QuestionSubmitLanguageEnum.JAVA.getValue();
             List<String> inputList = Arrays.asList("1 2", "3 4");
             ExecuteCodeRequest executeCodeRequest = ExecuteCodeRequest.builder()
                     .code(code)

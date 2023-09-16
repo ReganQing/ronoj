@@ -7,7 +7,7 @@ import com.ron.ronoj.judge.codesandbox.model.ExecuteCodeResponse;
  * 代码沙箱的接口定义
  * @author Ron_567
  */
-public interface CodeSandBox {
+public interface CodeSandbox {
     /**
      *
      * @param executeCodeRequest 请求执行代码
